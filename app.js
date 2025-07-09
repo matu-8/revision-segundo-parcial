@@ -11,12 +11,21 @@ const PORT = process.env.PORT
 app.use(express.json());
 app.use('/api', routerBook)
 
-// 
-inicioDB().then(()=>{
-    app.listen(PORT, () => { 
+
+const connectDB = async () => {
+    await inicioDB();
+    app.listen(PORT, () =>{
         console.log(" >>> Servidor inicializado en", PORT)
     });
-})
+}
+connectDB();
+
+// 
+// inicioDB().then(()=>{
+//     app.listen(PORT, () => { 
+//         console.log(" >>> Servidor inicializado en", PORT)
+//     });
+// })
 
 
 // app.listen(PORT, async () => {
